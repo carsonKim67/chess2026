@@ -64,7 +64,7 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
         this.addMouseMotionListener(this);
 
         //TO BE IMPLEMENTED FIRST
-     
+        //initialize the board with squares of alternating colors.
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
 
@@ -93,7 +93,7 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
 	//since we only have one kind of piece for now you need only set the same number of pieces on either side.
 	//it's up to you how you wish to arrange your pieces.
     void initializePieces() {
-    	
+    	//bishop is on the 3rd column
     	board[0][2].put(new Piece(true, RESOURCES_WBISHOP_PNG));
         
 
@@ -128,7 +128,7 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
             backgroundImage = Toolkit.getDefaultToolkit().createImage(imageUrl);  
         }
     
-
+        //highlight selected piece
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 8; y++) {
                 Square sq = board[x][y];
@@ -153,8 +153,9 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
         currX = e.getX();
         currY = e.getY();
 
+        //using the mouse coordinates, determine which square was clicked and if it contains a piece
         Square sq = (Square) this.getComponentAt(new Point(e.getX(), e.getY()));
-
+        //if piece exists, set it to be the current piece and set the display of the piece to false so that it doesn't show up in its original location while dragging.
         if (sq.isOccupied()) {
             currPiece = sq.getOccupyingPiece();
             for(Square s: currPiece.getLegalMoves(this, sq)){
@@ -188,8 +189,9 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
             if(currPiece!=null && currPiece.getLegalMoves(this, fromMoveSquare).contains(endSquare)){
                endSquare.put(currPiece);
                fromMoveSquare.removePiece();
-                    
-            } 
+               // flip turn after a valid move
+               whiteTurn = !whiteTurn;
+            }
         }
         fromMoveSquare.setDisplay(true);
         currPiece = null;
