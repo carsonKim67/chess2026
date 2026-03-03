@@ -173,6 +173,8 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
     //should move the piece to the desired location only if this is a legal move.
     //use the pieces "legal move" function to determine if this move is legal, then complete it by
     //moving the new piece to it's new board location. 
+    //pre con - the player is dragging a piece around and has just released the mouse. The piece being dragged is currPiece, and the square it is being dragged from is fromMoveSquare. The square it is being dragged to can be found using the mouse coordinates
+    //post con - if the move is legal, the piece is moved to the new square and removed from the old square. If the move is not legal, nothing happens
     @Override
     public void mouseReleased(MouseEvent e) {
         Square endSquare = (Square) this.getComponentAt(new Point(e.getX(), e.getY()));
