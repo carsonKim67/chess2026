@@ -48,10 +48,7 @@ public class Square extends JComponent {
         return occupyingPiece;
     }
     
-    // convenience alias used by some earlier code examples
-    public Piece getPiece() {
-        return getOccupyingPiece();
-    }
+
     
     public boolean isOccupied() {
         return (this.occupyingPiece != null);
