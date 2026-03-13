@@ -31,7 +31,7 @@ public class GameWindow {
         
 
         try {
-            Image whiteImg = ImageIO.read(new File(System.getProperty("user.dir")+Board.PICTURE_PATH+"wp.png"));
+            Image whiteImg = ImageIO.read(new File(System.getProperty("user.dir")+Board.path+"wp.png"));
             gameWindow.setIconImage(whiteImg);
         } catch (Exception e) {
             System.out.println("Game file wp.png not found");
