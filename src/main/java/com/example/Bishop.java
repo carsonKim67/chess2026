@@ -11,11 +11,9 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 //you will need to implement two functions in this file.
-public class Piece {
-    private final boolean color;
-    private BufferedImage img;
+public class Bishop extends Piece {
     
-    public Piece(boolean isWhite, String img_file) {
+    public Bishop (boolean isWhite, String img_file) {
         this.color = isWhite;
          
         try {
@@ -130,4 +128,4 @@ public class Piece {
         
         return legalMoves;
         }
-}
+}                                                                                 
