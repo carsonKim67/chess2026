@@ -14,15 +14,7 @@ import javax.imageio.ImageIO;
 public class Bishop extends Piece {
     
     public Bishop (boolean isWhite, String img_file) {
-        this.color = isWhite;
-         
-        try {
-            if (this.img == null) {
-                this.img = ImageIO.read(new File(System.getProperty("user.dir")+img_file));
-            }
-          } catch (IOException e) {
-            System.out.println("File not found: " + e.getMessage());
-          }
+       super(isWhite, img_file);      
     }
     
     
