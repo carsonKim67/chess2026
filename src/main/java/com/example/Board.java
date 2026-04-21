@@ -46,7 +46,7 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
     private boolean whiteTurn;
 
     //if the player is currently dragging a piece this variable contains it.
-    Bishop currPiece;
+    Piece currPiece;
     private Square fromMoveSquare;
     
     //used to keep track of the x/y coordinates of the mouse.
@@ -99,6 +99,9 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
         board[7][2].put(new Bishop(false, RESOURCES_BBISHOP_PNG));
         board[7][5].put(new Bishop(false, RESOURCES_BBISHOP_PNG));
 
+        board[0][4].put(new King(true, RESOURCES_WKING_PNG));
+        board[7][4].put(new King(false, RESOURCES_BKING_PNG));
+
         
 
     }
@@ -111,11 +114,11 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
         return whiteTurn;
     }
 
-    public void setCurrPiece(Bishop p) {
+    public void setCurrPiece(Piece p) {
         this.currPiece = p;
     }
 
-    public Bishop getCurrPiece() {
+    public Piece getCurrPiece() {
         return this.currPiece;
     }
 
@@ -173,6 +176,10 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
         repaint();
     }
 
+    public boolean isInCheck(boolean color){
+        return true;
+        //fix later
+    }
     //TO BE IMPLEMENTED!
     //should move the piece to the desired location only if this is a legal move.
     //use the pieces "legal move" function to determine if this move is legal, then complete it by
@@ -193,16 +200,21 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
        
         if(fromMoveSquare!=null){
             if(currPiece!=null && currPiece.getLegalMoves(this, fromMoveSquare).contains(endSquare)){
+                Piece captured = endSquare.getOccupyingPiece();
                endSquare.put(currPiece);
                fromMoveSquare.removePiece();
-               // flip turn after a valid move
+               if(isInCheck(whiteTurn)){
+                fromMoveSquare.put(currPiece);
+                endSquare.put(captured);
+               }
+             else{// flip turn after a valid move
                whiteTurn = !whiteTurn;
             }
         }
         fromMoveSquare.setDisplay(true);
         currPiece = null;
         repaint(); 
-    }
+    }}
 
     @Override
     public void mouseDragged(MouseEvent e) {
