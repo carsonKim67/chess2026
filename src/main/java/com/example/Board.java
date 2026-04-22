@@ -177,6 +177,17 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
     }
 
     public boolean isInCheck(boolean color){
+        ArrayList <Piece> oppPieces = new ArrayList<Piece>();
+        for(int i = 0; i<board.length;i++){
+            for(int j = 0; j<board[0].length;j++){
+                if(board[i][j].isOccupied()==true&&board[i][j].getOccupyingPiece()==!color){
+                    oppPieces.add(board[i][j].getOccupyingPiece());
+                }
+            }
+        }
+        for(int i=0;i<oppPieces.size();i++){
+            if(oppPieces.get(i).getControlledSquares(board, fromMoveSquare))
+        }
         return true;
         //fix later
     }
