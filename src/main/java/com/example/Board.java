@@ -102,6 +102,9 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
         board[0][4].put(new King(true, RESOURCES_WKING_PNG));
         board[7][4].put(new King(false, RESOURCES_BKING_PNG));
 
+        board[0][3].put(new Queen(true, RESOURCES_WQUEEN_PNG));
+        board[7][3].put(new Queen(false, RESOURCES_BQUEEN_PNG));
+
         
 
     }
@@ -177,18 +180,24 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
     }
 
     public boolean isInCheck(boolean color){
-        ArrayList <Piece> oppPieces = new ArrayList<Piece>();
+      
         for(int i = 0; i<board.length;i++){
             for(int j = 0; j<board[0].length;j++){
-                if(board[i][j].isOccupied()==true&&board[i][j].getOccupyingPiece()==!color){
-                    oppPieces.add(board[i][j].getOccupyingPiece());
+                if(board[i][j].isOccupied()==true&&board[i][j].getOccupyingPiece().getColor()!=color){
+                    Piece oppPiece =(board[i][j].getOccupyingPiece());
+                     for(Square s: oppPiece.getControlledSquares(board, board[i][j])){
+                        if(s.getOccupyingPiece()!=null&&s.getOccupyingPiece() instanceof King&& s.getOccupyingPiece().getColor()==color){
+                            return true;
+                        }
+                        //does 's' have a piece in it? is that piece a king? is that king the color == color?
+                        //if yes return true
+                     }
+            
                 }
             }
         }
-        for(int i=0;i<oppPieces.size();i++){
-            if(oppPieces.get(i).getControlledSquares(board, fromMoveSquare))
-        }
-        return true;
+  
+        return false;
         //fix later
     }
     //TO BE IMPLEMENTED!
@@ -210,7 +219,7 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
         
        
         if(fromMoveSquare!=null){
-            if(currPiece!=null && currPiece.getLegalMoves(this, fromMoveSquare).contains(endSquare)){
+            if(currPiece!=null && currPiece.getLegalMoves(this, fromMoveSquare).contains(endSquare) && currPiece.getColor() == whiteTurn){
                 Piece captured = endSquare.getOccupyingPiece();
                endSquare.put(currPiece);
                fromMoveSquare.removePiece();
