@@ -105,6 +105,39 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
         board[0][3].put(new Queen(true, RESOURCES_WQUEEN_PNG));
         board[7][3].put(new Queen(false, RESOURCES_BQUEEN_PNG));
 
+        board[1][0].put(new Pawn(true, RESOURCES_WPAWN_PNG));
+        board[1][1].put(new Pawn(true, RESOURCES_WPAWN_PNG));
+        board[1][2].put(new Pawn(true, RESOURCES_WPAWN_PNG));
+        board[1][3].put(new Pawn(true, RESOURCES_WPAWN_PNG));
+        board[1][4].put(new Pawn(true, RESOURCES_WPAWN_PNG));
+        board[1][5].put(new Pawn(true, RESOURCES_WPAWN_PNG));
+        board[1][6].put(new Pawn(true, RESOURCES_WPAWN_PNG));
+        board[1][7].put(new Pawn(true, RESOURCES_WPAWN_PNG));
+
+        board[6][0].put(new Pawn(false, RESOURCES_BPAWN_PNG));
+        board[6][1].put(new Pawn(false, RESOURCES_BPAWN_PNG));
+        board[6][2].put(new Pawn(false, RESOURCES_BPAWN_PNG));
+        board[6][3].put(new Pawn(false, RESOURCES_BPAWN_PNG));
+        board[6][4].put(new Pawn(false, RESOURCES_BPAWN_PNG));
+        board[6][5].put(new Pawn(false, RESOURCES_BPAWN_PNG));
+        board[6][6].put(new Pawn(false, RESOURCES_BPAWN_PNG));
+        board[6][7].put(new Pawn(false, RESOURCES_BPAWN_PNG));
+
+        board[0][0].put(new Rook(true,RESOURCES_WROOK_PNG));
+        board[0][7].put(new Rook(true,RESOURCES_WROOK_PNG));
+
+        board[7][0].put(new Rook(false,RESOURCES_BROOK_PNG));
+        board[7][7].put(new Rook(false,RESOURCES_BROOK_PNG));
+
+        board[0][1].put(new Knight(true,RESOURCES_WBISHOP_PNG));
+        board[0][6].put(new Knight(true,RESOURCES_WBISHOP_PNG));
+
+        board[7][1].put(new Knight(false,RESOURCES_BBISHOP_PNG));
+        board[7][6].put(new Knight(false,RESOURCES_BBISHOP_PNG));
+
+
+        
+
         
 
     }
