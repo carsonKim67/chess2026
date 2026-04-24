@@ -1,5 +1,7 @@
 package com.example;
-
+//Carson Kim
+//4/23/26
+//This code replicates Chess, with working turns and pieces.
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -211,7 +213,8 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
         }
         repaint();
     }
-
+    //pre con - king piece is on the board and works properly
+    //post con - checks if the king is in check and what spaces would put it in check
     public boolean isInCheck(boolean color){
       
         for(int i = 0; i<board.length;i++){
